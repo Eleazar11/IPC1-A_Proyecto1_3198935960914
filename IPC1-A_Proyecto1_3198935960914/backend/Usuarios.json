@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Admin",
+    "apellido": "Ipc1",
+    "genero": "masculino",
+    "correo": "admin@gmail.com",
+    "password": "1234",
+    "fecha_nacimieto": "10/10/2003",
+    "role": 0,
+    "idUser": 1
+  },
+  {
+    "nombre": "Jeremy",
+    "apellido": "Orellana",
+    "genero": "masculino",
+    "correo": "jeremy@gmail.com",
+    "password": "1234",
+    "fecha_nacimieto": 10203040,
+    "role": 1,
+    "idUser": 2
+  }
+]
