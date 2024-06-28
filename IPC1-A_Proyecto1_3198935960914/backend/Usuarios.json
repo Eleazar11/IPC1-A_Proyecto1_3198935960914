@@ -1,22 +1,42 @@
 [
   {
-    "nombre": "Admin",
-    "apellido": "Ipc1",
+    "nombre": "Rodolfo",
+    "apellido": "Morales",
     "genero": "masculino",
-    "correo": "admin@gmail.com",
-    "password": "1234",
+    "correo": "rodolfo@gmail.com",
+    "password": "Mora202010033les",
     "fecha_nacimieto": "10/10/2003",
     "role": 0,
     "idUser": 1
   },
   {
-    "nombre": "Jeremy",
-    "apellido": "Orellana",
+    "nombre": "jeremy",
+    "apellido": "perez",
     "genero": "masculino",
     "correo": "jeremy@gmail.com",
-    "password": "1234",
-    "fecha_nacimieto": 10203040,
+    "password": "Jeremy11pereZ",
+    "fecha_nacimieto": "10/10/2003",
     "role": 1,
     "idUser": 2
+  },
+  {
+    "nombre": "Astrid",
+    "apellido": "Colop",
+    "genero": "femenino",
+    "correo": "astrid@gmail.com",
+    "password": "As101trid",
+    "fecha_nacimieto": "10/10/2003",
+    "role": 1,
+    "idUser": 3
+  },
+  {
+    "nombre": "eleazar",
+    "apellido": "colop colop",
+    "genero": "masculino",
+    "correo": "neta@gmail.com",
+    "password": "Contra77Segura",
+    "fecha_nacimieto": "10/10/2003",
+    "role": 0,
+    "idUser": 4
   }
 ]

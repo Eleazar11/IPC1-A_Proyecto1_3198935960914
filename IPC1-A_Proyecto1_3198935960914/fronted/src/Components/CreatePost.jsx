@@ -98,14 +98,19 @@ function CreatePost() {
             <div style={{ display: "flex", alignItems: "center", height: "10vh", width: "100%", top: "0", backgroundColor: "#212529" }}>
                 <div style={{ display: "flex", alignItems: "center", height: "10vh", width: "50%", top: "0", paddingLeft: "5%" }}>
                     <ul style={{ listStyleType: "none", display: "flex", padding: 0, height: "100%", alignItems: "center", margin: "0px" }}>
-                        <li style={{ color: "white", marginRight: "35px" }}>
-                            <Link style={{ color: "white", textDecoration: "none" }} to="/user">
-                                Home
+                    <li style={{ color: "white", marginRight: "15px" }}>
+                            <Link style={{ color: "white", textDecoration: "none" }} to="/userAdmin">
+                                Movies
+                            </Link>
+                        </li>
+                        <li style={{ color: "white", marginRight: "15px" }}>
+                            <Link style={{ color: "white", textDecoration: "none" }} to="/createPost">
+                                Create post
                             </Link>
                         </li>
                         <li style={{ color: "white" }}>
-                            <Link style={{ color: "white", textDecoration: "none" }} to="/createPost">
-                                Create post
+                            <Link style={{ color: "white", textDecoration: "none" }} to="/verUsuarios">
+                                ver usuarios
                             </Link>
                         </li>
                     </ul>

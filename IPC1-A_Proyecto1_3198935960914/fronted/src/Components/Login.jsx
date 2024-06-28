@@ -55,10 +55,10 @@ function Login() {
                     // Validamos el rol
                     if (dataUser.role === 0) {
                         // Navegamos a la ruta donde se encuentra la pantalla del admin
-                        navigate('/admin')
+                        navigate('/userAdmin')
                     } else if (dataUser.role === 1) {
                         // Navegamos a la ruta donde se encuentra la pantalla del usuario
-                        navigate('/user')
+                        navigate('/userNormal')
                     }
                 } else {
                     // Si las credenciales están mal se muestra el siguiente mensaje.

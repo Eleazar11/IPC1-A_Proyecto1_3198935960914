@@ -8,6 +8,14 @@ const PORT = 5000;
 const FILENAME = 'Usuarios.json';
 const FILENAME1 = 'Posts.json';
 
+const FILENAME2 = 'moviesAlquiladas.json';
+let dataMoviesAlquiladas = [];
+
+dataMoviesAlquiladas = readDataFromFile(FILENAME2);
+function generateRentalId() {
+    return `AL${dataMoviesAlquiladas.length + 1}`;
+}
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -176,6 +184,120 @@ app.put('/updatePost/:postId', (req, res) => {
         res.send({ response: 'Publicación actualizada correctamente' });
     }
 });
+
+
+app.post('/alquilar', (req, res) => {
+    const { idPost, idUsuario } = req.body;
+
+    const rentalDate = new Date();
+    const rentalInfo = {
+        idPost,
+        idUsuario,
+        id_alquiler: generateRentalId(),
+        fechaAlquiler: {
+            year: rentalDate.getFullYear(),
+            month: rentalDate.getMonth() + 1,
+            day: rentalDate.getDate(),
+            hour: rentalDate.getHours(),
+        },
+    };
+
+    dataMoviesAlquiladas.push(rentalInfo);
+    updateDataFile(FILENAME2, dataMoviesAlquiladas);
+    res.status(201).send({ response: 'Película alquilada correctamente.' });
+});
+
+//para las movieeeees
+app.get('/getRentedMovies', (req, res) => {
+    const moviesAlquiladas = JSON.parse(fs.readFileSync('moviesAlquiladas.json', 'utf-8'));
+    const posts = JSON.parse(fs.readFileSync('Posts.json', 'utf-8'));
+
+    const rentedMovies = moviesAlquiladas.map(alquiler => {
+        const post = posts.find(p => p.id === alquiler.idPost);
+        return {
+            ...post,
+            id_alquiler: alquiler.id_alquiler,
+        };
+    });
+
+    res.json(rentedMovies);
+});
+
+app.post('/devolver', (req, res) => {
+    const { id_alquiler, idUsuario } = req.body;
+    let moviesAlquiladas = JSON.parse(fs.readFileSync('moviesAlquiladas.json', 'utf-8'));
+
+    moviesAlquiladas = moviesAlquiladas.filter(alquiler => alquiler.id_alquiler !== id_alquiler);
+
+    fs.writeFileSync('moviesAlquiladas.json', JSON.stringify(moviesAlquiladas));
+
+    res.json({ message: 'Película devuelta correctamente.' });
+});
+
+
+
+app.post('/devolver', (req, res) => {
+    const { idPost, idUsuario, returnDate } = req.body;
+    const rentedMoviesPath = './data/moviesAlquiladas.json';
+    
+    fs.readFile(rentedMoviesPath, (err, data) => {
+        if (err) {
+            return res.status(500).send({ error: 'Error al leer el archivo de películas alquiladas' });
+        }
+
+        let rentedMovies = JSON.parse(data);
+        rentedMovies = rentedMovies.filter(movie => !(movie.idPost === idPost && movie.idUsuario === idUsuario));
+
+        fs.writeFile(rentedMoviesPath, JSON.stringify(rentedMovies, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send({ error: 'Error al actualizar el archivo de películas alquiladas' });
+            }
+            res.send({ message: 'Película devuelta correctamente' });
+        });
+    });
+});
+
+
+//fin de para las movies
+
+//para movies pero desde el thunderclient
+// GET para obtener un post específico
+app.get('/movies/:postId', (req, res) => {
+    const postId = req.params.postId;
+    const post = dataPosts.find(post => post.id === postId);
+    if (!post) {
+        res.status(404).send({ response: 'Publicación no encontrada' });
+    } else {
+        res.json(post);
+    }
+});
+
+// PUT para actualizar un post específico
+app.put('/movies/:postId', (req, res) => {
+    const postId = req.params.postId;
+    const updatedPost = req.body;
+
+    const index = dataPosts.findIndex(post => post.id === postId);
+    if (index === -1) {
+        res.status(404).send({ response: 'Publicación no encontrada' });
+    } else {
+        dataPosts[index].title = updatedPost.title;
+        dataPosts[index].synopsis = updatedPost.synopsis;
+        dataPosts[index].rentalPrice = updatedPost.rentalPrice;
+        dataPosts[index].director = updatedPost.director;
+        dataPosts[index].releaseYear = updatedPost.releaseYear;
+        dataPosts[index].duration = updatedPost.duration;
+        dataPosts[index].genre = updatedPost.genre;
+        dataPosts[index].image = updatedPost.image;
+
+        updateDataFile(FILENAME1, dataPosts);
+        res.send({ response: 'Publicación actualizada correctamente' });
+    }
+});
+
+//fin para movies pero desde el thunderclient
+
+
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto: ${PORT}`);
