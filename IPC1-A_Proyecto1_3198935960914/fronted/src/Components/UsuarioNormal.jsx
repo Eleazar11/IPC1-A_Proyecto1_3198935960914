@@ -134,7 +134,7 @@ function UsuarioNormal() {
                     </Modal.Header>
                     <Modal.Body>
                         <p><strong>Título:</strong> {selectedPost.title}</p>
-                        <p><strong>Sinopsis:</strong> {selectedPost.sinopsis}</p>
+                        <p><strong>Sinopsis:</strong> {selectedPost.synopsis}</p>
                         <p><strong>Precio de Alquiler:</strong> {selectedPost.rentalPrice}</p>
                         <p><strong>Director:</strong> {selectedPost.director}</p>
                         <p><strong>Año de Estreno:</strong> {selectedPost.releaseYear}</p>

@@ -79,7 +79,7 @@ function UsuarioAdmin() {
                         </li>
                         <li style={{ color: "white", marginRight: "15px" }}>
                             <Link style={{ color: "white", textDecoration: "none" }} to="/createPost">
-                                Create post
+                            Subir Movie
                             </Link>
                         </li>
                         <li style={{ color: "white" }}>
