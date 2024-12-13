@@ -20,16 +20,6 @@
     "idUser": 2
   },
   {
-    "nombre": "Astrid",
-    "apellido": "Colop",
-    "genero": "femenino",
-    "correo": "astrid@gmail.com",
-    "password": "As101trid",
-    "fecha_nacimieto": "10/10/2003",
-    "role": 1,
-    "idUser": 3
-  },
-  {
     "nombre": "eleazar",
     "apellido": "colop colop",
     "genero": "masculino",
@@ -38,5 +28,25 @@
     "fecha_nacimieto": "10/10/2003",
     "role": 0,
     "idUser": 4
+  },
+  {
+    "nombre": "josue",
+    "apellido": "castillo",
+    "genero": "masculino",
+    "correo": "jrodolfo@gmail.com",
+    "password": "1234",
+    "fecha_nacimieto": "10/10/2003",
+    "role": 1,
+    "idUser": 5
+  },
+  {
+    "nombre": "josue rodolfo",
+    "apellido": "castillo",
+    "genero": "masculino",
+    "correo": "jrodolfo@gmail.com",
+    "password": "1234",
+    "fecha_nacimieto": "10/10/2003",
+    "role": 1,
+    "idUser": 5
   }
 ]
